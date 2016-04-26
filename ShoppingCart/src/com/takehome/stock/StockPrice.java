@@ -3,7 +3,6 @@ package com.takehome.stock;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -36,7 +35,7 @@ ht.put("mutton",350);
 
 
 System.out.println("The list of items are:");
-Enumeration e=ht.keys();
+Enumeration<String> e=ht.keys();
 while(e.hasMoreElements())
 System.out.println(e.nextElement());
 boolean choice=true;
@@ -56,12 +55,12 @@ while(choice){
 		choice=Boolean.parseBoolean(br.readLine());
 		}
 }
-public void buyProducts(){
+/*public void buyProducts(){
 	ArrayList<String> arl=new ArrayList<String>();
 	System.out.println("select Item to add");
 	
 }
-	
+	*/
 public static void main(String[] args)  { 
 	StockPrice sb=new StockPrice();
 	try {
