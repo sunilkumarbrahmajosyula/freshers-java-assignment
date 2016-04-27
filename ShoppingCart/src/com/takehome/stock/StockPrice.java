@@ -65,7 +65,7 @@ while(choice){
 
 }}
 public void buyProducts() throws IOException{
-	ArrayList<String> arl=new ArrayList<String>();
+	/*ArrayList<String> arl=new ArrayList<String>();
 	System.out.println("enter how many items you wish to add");
 	int num=Integer.parseInt(br.readLine());
 	System.out.println("enter the item names to add");
@@ -77,8 +77,11 @@ public void buyProducts() throws IOException{
 	Iterator it=arl.iterator();
 	while(it.hasNext()){
 		System.out.println(it.next());
-	}
+	}*/
 
+	System.out.println("select items to add to the  cart");
+	System.out.println();
+	
 	
 }
 	
