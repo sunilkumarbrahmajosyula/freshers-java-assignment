@@ -3,12 +3,15 @@ package com.takehome.stock;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Iterator;
 
 public class StockPrice{
+	private static final Integer I1001 = null;
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-public void buy() throws NumberFormatException, IOException{
+public void checkPrice() throws NumberFormatException, IOException{
 Hashtable<String, Integer>ht=new Hashtable<String,Integer>();
 ht.put("apples",100);
 ht.put("pears",50);
@@ -33,11 +36,16 @@ ht.put("leafyvegetables",85);
 ht.put("chicken",200);
 ht.put("mutton",350);
 
+	
 
 System.out.println("The list of items are:");
 Enumeration<String> e=ht.keys();
 while(e.hasMoreElements())
 System.out.println(e.nextElement());
+boolean select=true;
+while(select){
+	System.out.println("Do u want to know the prices of the item(true or false): ");
+	select=Boolean.parseBoolean(br.readLine());
 boolean choice=true;
 while(choice){
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
@@ -51,25 +59,37 @@ while(choice){
 	}
 		else{
 			System.out.println("item not found");
-		}	System.out.println("Do u want to selct more fruits-menu(true or false): ");
+		}	System.out.println("Do u want to get the price of more Items(true or false): ");
 		choice=Boolean.parseBoolean(br.readLine());
 		}
-}
-/*public void buyProducts(){
+
+}}
+public void buyProducts() throws IOException{
 	ArrayList<String> arl=new ArrayList<String>();
-	System.out.println("select Item to add");
+	System.out.println("enter how many items you wish to add");
+	int num=Integer.parseInt(br.readLine());
+	System.out.println("enter the item names to add");
+	for(int i=0;i<num;i++){
+		String s=br.readLine();
+		arl.add(s);
+	}
+	System.out.println("the items in the list are");
+	Iterator it=arl.iterator();
+	while(it.hasNext()){
+		System.out.println(it.next());
+	}
+
 	
 }
-	*/
+	
 public static void main(String[] args)  { 
 	StockPrice sb=new StockPrice();
 	try {
-		sb.buy();
+		sb.checkPrice();
+		sb.buyProducts();
 	} catch (NumberFormatException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 }
