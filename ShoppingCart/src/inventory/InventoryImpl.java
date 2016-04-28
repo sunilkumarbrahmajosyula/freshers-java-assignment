@@ -2,10 +2,10 @@ package inventory;
 
 public class InventoryImpl {
 
-   private int totapples;
-   private int totpears;
-   private int tottropicana;
-   private int totredlabel;
+    private int totapples;
+    private int totpears;
+    private int tottropicana;
+    private int totredlabel;
     private int totmaggie;
     private int totyippie;
     private int totbeans;

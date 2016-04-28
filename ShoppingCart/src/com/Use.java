@@ -44,24 +44,24 @@ public class Use implements Runnable {
 				e.printStackTrace();
 			}//end of catch
 		*/	}//end of for
-		try {
-			Thread.sleep(3000);
+		/*try {
+			//Thread.sleep(3000);
 		} catch (InterruptedException e) {
 		e.printStackTrace();	
 		}//end of catch
-	noOfCarts=noOfCarts-num;
+*/	noOfCarts=noOfCarts-num;
 	System.out.println("the number of carts available left are"+noOfCarts);
 	
 	for(int i=1;i<noOfCarts;i++){
 		Thread t=new Thread(u);
 		t.start();
-		try {
-			Thread.sleep(3000);
+		/*try {
+			//Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}//end of for
+*/		}//end of for
 	System.out.println("all the carts are handed over kindly wait in the waiting hall");
 		}
 		
@@ -77,11 +77,11 @@ public class Use implements Runnable {
 				e.printStackTrace();
 			}
 		}//end of for
-		try {
-			Thread.sleep(100000);
+		/*try {
+			//Thread.sleep(100000);
 		} catch (InterruptedException e) {
 		e.printStackTrace();	
-		}
+		}*/
 		}
 	
 			System.out.println("no carts are available please wait in the waiting hall");
