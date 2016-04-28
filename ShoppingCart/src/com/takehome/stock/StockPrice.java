@@ -5,23 +5,34 @@ import inventory.InventoryImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-import manager.ManagerImpl;
+import cart.CartImpl;
 
 
 // check the prices if necessary and buy
 
 
-public class StockPrice{
+public class StockPrice implements CartImpl{
+	public void cartTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println("enteres the store at"+dateFormat.format(date));
+		
+	}
+
 InventoryImpl impl=new InventoryImpl(); 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 public void checkAndBuy() throws NumberFormatException, IOException{
 // to know the prices of the items
-	Hashtable<String, Integer>ht=new Hashtable<String,Integer>();
+	int ftot=0;
+	HashMap<String, Integer>ht=new HashMap<String,Integer>();
 ht.put("apples",100);
 ht.put("pears",50);
 ht.put("tropicana",40);
@@ -37,9 +48,12 @@ ht.put("tshirt",600);
 	
 
 System.out.println("The list of items are:");
-Enumeration<String> e=ht.keys();
-while(e.hasMoreElements())
-System.out.println(e.nextElement());
+Set<String> set=new HashSet<String>();
+set=ht.keySet();
+System.out.println(set);
+//Enumeration<String> e=ht.keys();
+/*while(e.hasMoreElements())
+System.out.println(e.nextElement());*/
 boolean select=true;
 System.out.println("Do u want to know the prices of the item(true or false): ");
 select=Boolean.parseBoolean(br.readLine());
@@ -65,8 +79,8 @@ while(choice){
 }//end of while(select)
 
 //select Items and purchase
-
-
+boolean want=true;
+while(want){
 System.out.println("select items to add to the  cart");
     System.out.println("1.Fruits");
     System.out.println("2.Beverges");
@@ -96,9 +110,11 @@ case 1:
            int qty=Integer.parseInt(br.readLine());
            int tot=qty*price;
            System.out.println("total price:"+tot);
-         impl.setTotapples((impl.getTotapples()-qty));
+        
+        impl.setTotapples((impl.getTotapples())-qty);
          System.out.println("remaining totapples:"+impl.getTotapples());
-           
+           ftot=ftot+tot;
+          
            break;
     case 2:
          String name1="pears";
@@ -268,7 +284,7 @@ case 5:
     switch(nv){
     case 1:
     	
-String name8="chicken";
+        String name8="chicken";
         
      	Integer price8=ht.get(name8);
          if(price8!=null){
@@ -353,22 +369,10 @@ String name10="jeans";
    	 System.out.println("invalid option");
     
    }//end of inner switch
-   break;	
-
-    }// end of major while
-}// end of method
-	
-public static void main(String[] args)  { 
-	ManagerImpl mimpl=new ManagerImpl();
-	mimpl.setData();
-	StockPrice sb=new StockPrice();
-	try {
-		sb.checkAndBuy();
-	} catch (NumberFormatException e) {
-		e.printStackTrace();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-}// end of main method
-}// end of class
+}
+    System.out.println("Do you want to selct more items(true or false): ");
+want = Boolean.parseBoolean(br.readLine());
+System.out.println("tot bill is:"+ftot);}
+}
+}
 

@@ -8,25 +8,7 @@ import java.util.Date;
 import com.takehome.registration.RegistrationImpl;
 import com.takehome.stock.StockPrice;
 
-public class CartImpl {
-
-	public void provideCart() throws InterruptedException {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
-		System.out.println("enteres the store at"+dateFormat.format(date));
-		RegistrationImpl rr=new RegistrationImpl();
-		
-		
-		//Tahread.sleep(100000);
-		StockPrice sb=new StockPrice();
-		try {
-			sb.checkAndBuy();
-			
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+public interface CartImpl {
+void cartTime();
 	
-		}
 }

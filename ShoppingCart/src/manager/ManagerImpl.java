@@ -2,7 +2,7 @@ package manager;
 
 import inventory.InventoryImpl;
 
-public class ManagerImpl {
+public class ManagerImpl  {
 	
 	
  public void setData(){

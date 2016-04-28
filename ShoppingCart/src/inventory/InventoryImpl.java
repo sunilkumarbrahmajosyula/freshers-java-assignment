@@ -1,6 +1,8 @@
 package inventory;
 
-public class InventoryImpl {
+import manager.ManagerImpl;
+
+public class InventoryImpl extends ManagerImpl {
 
     private int totapples;
     private int totpears;
