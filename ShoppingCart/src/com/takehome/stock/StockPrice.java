@@ -13,13 +13,16 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.takehome.billing.BillingImpl;
+
 import cart.CartImpl;
 
 
 // check the prices if necessary and buy
 
 
-public class StockPrice implements CartImpl{
+public class StockPrice implements CartImpl,BillingImpl{
+	StockPrice s=new StockPrice();
 	public void cartTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -29,7 +32,7 @@ public class StockPrice implements CartImpl{
 
 InventoryImpl impl=new InventoryImpl(); 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-public void checkAndBuy() throws NumberFormatException, IOException{
+public int checkAndBuy() throws NumberFormatException, IOException{
 // to know the prices of the items
 	int ftot=0;
 	HashMap<String, Integer>ht=new HashMap<String,Integer>();
@@ -373,6 +376,9 @@ String name10="jeans";
     System.out.println("Do you want to selct more items(true or false): ");
 want = Boolean.parseBoolean(br.readLine());
 System.out.println("tot bill is:"+ftot);}
+return ftot;}
+public void billing() {
+	System.out.println("tot is:");
 }
 }
 
