@@ -3,6 +3,9 @@ package com;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import manager.ManagerImpl;
 
@@ -42,6 +45,10 @@ public class Use implements Runnable {
 	
 		try {
 			num =Integer.parseInt(br.readLine());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println("no of customers in the cart at"+dateFormat.format(date)+num);
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

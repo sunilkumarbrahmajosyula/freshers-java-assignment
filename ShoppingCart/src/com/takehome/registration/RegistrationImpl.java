@@ -6,9 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 public class RegistrationImpl extends JFrame implements ActionListener{
-	/**
-	 * 
-	 */
+	
 	JComboBox<String> box;
 	JLabel lb;
 	private static final long serialVersionUID = 1L;

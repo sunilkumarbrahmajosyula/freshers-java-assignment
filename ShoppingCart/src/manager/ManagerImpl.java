@@ -17,5 +17,6 @@ public class ManagerImpl  {
 	 impl.setTottropicana(10);
 	 impl.setTottshirt(10);
 	 impl.setTotyippie(10);
+	 impl.setTotmutton(10);
  }
 }

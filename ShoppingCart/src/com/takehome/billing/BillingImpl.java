@@ -1,9 +1,10 @@
 package com.takehome.billing;
 
+import com.takehome.stock.StockPrice;
 
 
-public interface BillingImpl  {
-    public void billing();
+
+public class BillingImpl  {
+
 }
-
 

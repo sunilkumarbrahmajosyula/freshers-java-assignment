@@ -14,6 +14,7 @@ public class InventoryImpl extends ManagerImpl {
     private int totleafyvegetables;
     private int totjeans;
     private int tottshirt;
+    private int totmutton;
  
 	public int getTotapples() {
 		return totapples;
@@ -74,6 +75,21 @@ public class InventoryImpl extends ManagerImpl {
 	}
 	public void setTottshirt(int tottshirt) {
 		this.tottshirt = tottshirt;
+	}
+	public int getTotmutton() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void setTotmutton(int totmutton) {
+		this.totmutton = totmutton;
+	}
+	public int getTotchicken() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void setTotchicken(int i) {
+		// TODO Auto-generated method stub
+		
 	}
     	
     	
