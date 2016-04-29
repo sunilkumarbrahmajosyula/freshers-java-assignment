@@ -22,8 +22,7 @@ import cart.CartImpl;
 
 
 public class StockPrice implements CartImpl,BillingImpl{
-	StockPrice s=new StockPrice();
-	public void cartTime() {
+		public void cartTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		System.out.println("enteres the store at"+dateFormat.format(date));
@@ -32,7 +31,7 @@ public class StockPrice implements CartImpl,BillingImpl{
 
 InventoryImpl impl=new InventoryImpl(); 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-public int checkAndBuy() throws NumberFormatException, IOException{
+public void checkAndBuy() throws NumberFormatException, IOException{
 // to know the prices of the items
 	int ftot=0;
 	HashMap<String, Integer>ht=new HashMap<String,Integer>();
@@ -54,24 +53,22 @@ System.out.println("The list of items are:");
 Set<String> set=new HashSet<String>();
 set=ht.keySet();
 System.out.println(set);
-//Enumeration<String> e=ht.keys();
-/*while(e.hasMoreElements())
-System.out.println(e.nextElement());*/
-boolean select=true;
-System.out.println("Do u want to know the prices of the item(true or false): ");
-select=Boolean.parseBoolean(br.readLine());
-while(select){
 	boolean choice=true;
+System.out.println("do u want to know the prices of the items(true or false)");
+choice=Boolean.parseBoolean(br.readLine());
 while(choice){
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 	System.out.println("Enter item name to get item price");
-	String name=br.readLine();
+	
+		String name=br.readLine();
 	name=name.trim();
 	Integer price=ht.get(name);
+
 	if(price!=null){
 		int pr=price.intValue();
 		System.out.println(name+"price:"+pr);
-	}// end of if
+	}
+	// end of if
 		else{
 			System.out.println("item not found");
 		}	
@@ -79,10 +76,12 @@ while(choice){
 	choice=Boolean.parseBoolean(br.readLine());
 		}//end of while(choice)
 
-}//end of while(select)
+//end of while(select)
 
 //select Items and purchase
 boolean want=true;
+System.out.println("do you want to continueshopping (true or false) ");
+want=Boolean.parseBoolean(br.readLine());
 while(want){
 System.out.println("select items to add to the  cart");
     System.out.println("1.Fruits");
@@ -372,11 +371,14 @@ String name10="jeans";
    	 System.out.println("invalid option");
     
    }//end of inner switch
-}
-    System.out.println("Do you want to selct more items(true or false): ");
+}//end of outer switch
+
+System.out.println("Do you want to selct more items(true or false): ");
 want = Boolean.parseBoolean(br.readLine());
-System.out.println("tot bill is:"+ftot);}
-return ftot;}
+}
+System.out.println("tot bill is:"+ftot);
+System.out.println("-----------------------------------------------");
+}
 public void billing() {
 	System.out.println("tot is:");
 }

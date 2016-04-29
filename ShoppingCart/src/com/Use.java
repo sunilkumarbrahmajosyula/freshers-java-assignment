@@ -13,29 +13,26 @@ import cart.CartImpl;
 
 public class Use implements Runnable {
        
-   public void run() {
+   public synchronized void run() {
 	   ManagerImpl m=new ManagerImpl();
 	   m.setData();
 	   StockPrice s=new StockPrice();
-		
+		System.out.println("cart alloted to"
+				+ Thread.currentThread().getName());
+	
 	   s.cartTime();
+	   System.out.println("-------------------------------------------------------------------------");
 	   try {
 		s.checkAndBuy();
 	} catch (NumberFormatException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-		
-		
-      	 
-      	  
-		
+	
 		  }
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
        
        int noOfCarts=6,num = 0;
@@ -46,64 +43,44 @@ public class Use implements Runnable {
 		try {
 			num =Integer.parseInt(br.readLine());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("the number of carts available before providing are:"+noOfCarts);
-		if(num<=noOfCarts){
+		 if (num<=noOfCarts){ 
+			 System.out.println("carts alloted to "+num+"customers");
 		for(int i=1;i<=num;i++){				
 			Thread t=new Thread(u);
 			t.start();
-			try {
-				Thread.sleep(100000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}//end of catch
-			}//end of for
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-		e.printStackTrace();	
-		}//end of catch
-	noOfCarts=noOfCarts-num;
-	System.out.println("the number of carts available left are"+noOfCarts);
+			t.setName("customer"+i);
+		}
+			noOfCarts=noOfCarts-num;
+	System.out.println("remaining carts available  are"+noOfCarts);
+	System.out.println("alloting cart for the remaining........");
+
 	
 	for(int i=1;i<noOfCarts;i++){
 		Thread t=new Thread(u);
 		t.start();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}//end of for
-	System.out.println("all the carts are handed over kindly wait in the waiting hall");
-		}
+		t.setName("person"+i);
 		
-	else if (num>=noOfCarts) {
+	}//end of for
+	System.out.println("all the carts are handed over kindly wait in the waiting hall indicate you when the carts are free");
+		}//end of if
+		
+	else if(num>=noOfCarts){
+		System.out.println("carts alloted to "+noOfCarts+"customers");
 		num=num-noOfCarts;
 		for(int i=1;i<=num;i++){				
 			Thread t=new Thread(u);
 			t.start();
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}//end of for
-		/*try {
-			//Thread.sleep(100000);
-		} catch (InterruptedException e) {
-		e.printStackTrace();	
-		}*/
-		}
+			t.setName("person"+i);
+		
+			}//end of for
+		}//end of else
 	
-			System.out.println("no carts are available please wait in the waiting hall");
-		}
+	
+			System.out.println("remaining customers please wait in the waiting hall");
 		
+		 }
 		
-	}
-
+}
