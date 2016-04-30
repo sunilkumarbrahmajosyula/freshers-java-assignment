@@ -21,7 +21,7 @@ import cart.CartImpl;
 // check the prices if necessary and buy
 
 
-public class StockPrice implements CartImpl{
+public class StockPrice implements CartImpl,BillingImpl{
 		public void cartTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -31,6 +31,7 @@ public class StockPrice implements CartImpl{
 
 InventoryImpl impl=new InventoryImpl(); 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	private int bill;
 public void checkAndBuy() throws NumberFormatException, IOException{
 // to know the prices of the items
 	long ftot=0;
@@ -423,7 +424,10 @@ String name10="jeans";
            System.out.println("total price:"+tot11);
          impl.setTottshirt((impl.getTotpears()-qty11));
          System.out.println("remaining totapples:"+impl.getTottshirt());
-         Set<String> data13=new HashSet<String>();
+         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+ 		Date date = new Date();
+ 		System.out.println("items in the cart  at"+dateFormat.format(date));
+ 		Set<String> data13=new HashSet<String>();
          data13=hm.keySet();
          System.out.println(data13);
          break;
@@ -436,12 +440,27 @@ String name10="jeans";
 System.out.println("Do you want to selct more items(true or false): ");
 want = Boolean.parseBoolean(br.readLine());
 }
+DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+Date date = new Date();
+System.out.println("items in the cart at"+dateFormat.format(date));
 Set<String> data=new HashSet<String>();
 data=hm.keySet();
 System.out.println(data);
 System.out.println("total bill is:"+ftot);
-//System.out.println("-----------------------------------------------");
+int c=(int) ftot;
+billing(c);
+System.out.println("-----------------------------------------------");
+}
+
+public void billing(int totBill) {
+	
+	
+	this.bill=totBill;
+System.out.println("the final bill is"+this.bill);	
+
+	
 
 }
+
 }
 

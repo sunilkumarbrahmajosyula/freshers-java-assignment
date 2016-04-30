@@ -18,5 +18,9 @@ public class ManagerImpl  {
 	 impl.setTottshirt(10);
 	 impl.setTotyippie(10);
 	 impl.setTotmutton(10);
+
  }
+
+
+
 }

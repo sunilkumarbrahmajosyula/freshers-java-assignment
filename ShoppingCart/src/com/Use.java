@@ -1,5 +1,7 @@
 package com;
 
+import inventory.InventoryImpl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,8 +19,8 @@ import cart.CartImpl;
 public class Use implements Runnable {
        
    public synchronized void run() {
-	   ManagerImpl m=new ManagerImpl();
-	   m.setData();
+	 ManagerImpl m=new ManagerImpl();
+	 m.setData();
 	   StockPrice s=new StockPrice();
 		System.out.println("cart alloted to"
 				+ Thread.currentThread().getName());

@@ -92,6 +92,11 @@ public class InventoryImpl extends ManagerImpl {
 		
 	}
     	
+
+	public void display(){
+		System.out.println(""+this.getTotapples());
+		System.out.println(""+this.getTotchicken());
+	}
     	
      }
 

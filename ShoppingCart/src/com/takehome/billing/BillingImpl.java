@@ -4,7 +4,10 @@ import com.takehome.stock.StockPrice;
 
 
 
-public class BillingImpl  {
+public interface BillingImpl  {
+
+void billing(int totBill);
+	
 
 }
 
