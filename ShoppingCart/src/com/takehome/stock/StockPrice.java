@@ -124,8 +124,9 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetapples();
 					} else {
 						impl.setTotapples((impl.getTotapples()) - qty);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotapples());
+						System.out
+								.println("The state of inventory for the item apples:"
+										+ impl.getTotapples());
 					}
 					ftot = ftot + tot;
 					break;
@@ -147,13 +148,22 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetpears();
 					} else {
 						impl.setTotpears((impl.getTotpears()) - qty1);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotapples());
+						System.out
+								.println("The state of inventory for the item pear:"
+										+ impl.getTotpears());
 					}
-					impl.setTotpears((impl.getTotpears() - qty1));
-					System.out.println("Remaining totapples:"
-							+ impl.getTotapples());
+					DateFormat dateFormat = new SimpleDateFormat(
+							"yyyy/MM/dd HH:mm:ss");
+					Date date = new Date();
+					System.out.println("Items in the cart  at"
+							+ dateFormat.format(date));
+					Set<String> data13 = new HashSet<String>();
+					data13 = hm.keySet();
+					System.out.println("The state of shopper's cart is"
+							+ data13);
+
 					break;
+
 				default:
 					System.out.println("invalid option");
 
@@ -185,13 +195,11 @@ public class StockPrice implements CartImpl, BillingImpl {
 					if (impl.getTottropicana() == 0) {
 						imp.resettropicana();
 					} else {
-						impl.setTotapples((impl.getTottropicana()) - qty2);
-						System.out.println("Remaining totapples:"
-								+ impl.getTottropicana());
+						impl.setTottropicana((impl.getTottropicana()) - qty2);
+						System.out
+								.println("The state of inventory for the item tropicana"
+										+ impl.getTottropicana());
 					}
-					impl.setTottropicana((impl.getTottropicana() - qty2));
-					System.out.println("Remaining tottropicana:"
-							+ impl.getTottropicana());
 					break;
 
 				case 2:
@@ -214,13 +222,12 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetredlabel();
 					} else {
 						impl.setTotapples((impl.getTotredlabel()) - qty3);
-						System.out.println("remaining totapples:"
-								+ impl.getTotredlabel());
+						System.out
+								.println("The state of inventory for the item redlabel"
+										+ impl.getTotredlabel());
 					}
-					impl.setTotredlabel((impl.getTotredlabel() - qty3));
-					System.out.println("Remaining totredlabel:"
-							+ impl.getTotredlabel());
 					break;
+
 				default:
 					System.out.println("invalid option");
 
@@ -256,12 +263,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetmaggie();
 					} else {
 						impl.setTotmaggie((impl.getTotmaggie()) - qty4);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotmaggie());
+						System.out
+								.println("The state of inventory for the item maggie"
+										+ impl.getTotmaggie());
 					}
-					impl.setTotmaggie((impl.getTotmaggie() - qty4));
-					System.out.println("Remaining totmaggie:"
-							+ impl.getTotmaggie());
 
 					break;
 				case 2:
@@ -284,8 +289,9 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetyippie();
 					} else {
 						impl.setTotyippie((impl.getTotyippie()) - qty5);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotyippie());
+						System.out
+								.println("The state of inventory for the item yippie"
+										+ impl.getTotyippie());
 					}
 					impl.setTotyippie((impl.getTotyippie() - qty5));
 					System.out.println("Remaining totyippie:"
@@ -323,12 +329,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetbeans();
 					} else {
 						impl.setTotbeans((impl.getTotbeans()) - qty6);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotbeans());
+						System.out
+								.println("The state of inventory for the item beans"
+										+ impl.getTotbeans());
 					}
-					impl.setTotbeans((impl.getTotbeans() - qty6));
-					System.out.println("Remaining totbeans:"
-							+ impl.getTotbeans());
 					break;
 				case 2:
 					String name7 = "leafyvegetables";
@@ -350,12 +354,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 					} else {
 						impl.setTotleafyvegetables((impl
 								.getTotleafyvegetables()) - qty7);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotleafyvegetables());
+						System.out
+								.println("The state of inventory for the item leafy vegetables:"
+										+ impl.getTotleafyvegetables());
 					}
-					impl.setTotleafyvegetables((impl.getTotpears() - qty7));
-					System.out.println("Remaining totleafyvegetables:"
-							+ impl.getTotleafyvegetables());
 					Set<String> data7 = new HashSet<String>();
 					data7 = hm.keySet();
 					System.out.println(data7);
@@ -391,12 +393,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetchicken();
 					} else {
 						impl.setTotchicken((impl.getTotchicken()) - qty8);
-						System.out.println("remaining totapples:"
-								+ impl.getTotchicken());
+						System.out
+								.println("The state of inventory for the item chicken"
+										+ impl.getTotchicken());
 					}
-					impl.setTotchicken((impl.getTotchicken() - qty8));
-					System.out.println("Remaining totchicken:"
-							+ impl.getTotchicken());
 					break;
 				case 2:
 
@@ -418,12 +418,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetmutton();
 					} else {
 						impl.setTotmutton((impl.getTotmutton()) - qty9);
-						System.out.println("Remaining totapples:"
-								+ impl.getTotmutton());
+						System.out
+								.println("The state of inventory for the item mutton"
+										+ impl.getTotmutton());
 					}
-					impl.setTotmutton((impl.getTotmutton() - qty9));
-					System.out.println("Remaining totmutton:"
-							+ impl.getTotmutton());
 					break;
 				default:
 					System.out.println("invalid option");
@@ -458,12 +456,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resetjeans();
 					} else {
 						impl.setTotjeans((impl.getTotjeans()) - qty10);
-						System.out.println("Remaining totjeans:"
-								+ impl.getTotjeans());
+						System.out
+								.println("The state of inventory for the item jeans"
+										+ impl.getTotjeans());
 					}
-					impl.setTotjeans((impl.getTotpears() - qty10));
-					System.out.println("Remaining totapples:"
-							+ impl.getTotjeans());
 					break;
 				case 2:
 
@@ -485,12 +481,10 @@ public class StockPrice implements CartImpl, BillingImpl {
 						imp.resettshirt();
 					} else {
 						impl.setTottshirt((impl.getTottshirt()) - qty11);
-						System.out.println("Remaining tottshirts:"
-								+ impl.getTottshirt());
+						System.out
+								.println("The state of inventory for the item tshirt"
+										+ impl.getTottshirt());
 					}
-					impl.setTottshirt((impl.getTotpears() - qty11));
-					System.out.println("Remaining totapples:"
-							+ impl.getTottshirt());
 					DateFormat dateFormat = new SimpleDateFormat(
 							"yyyy/MM/dd HH:mm:ss");
 					Date date = new Date();
@@ -498,7 +492,8 @@ public class StockPrice implements CartImpl, BillingImpl {
 							+ dateFormat.format(date));
 					Set<String> data13 = new HashSet<String>();
 					data13 = hm.keySet();
-					System.out.println(data13);
+					System.out.println("The state of shopper's cart is"
+							+ data13);
 					break;
 				default:
 					System.out.println("Invalid option");
@@ -515,8 +510,7 @@ public class StockPrice implements CartImpl, BillingImpl {
 		System.out.println("Items in the cart at" + dateFormat.format(date));
 		Set<String> data = new HashSet<String>();
 		data = hm.keySet();
-		System.out.println(data);
-		System.out.println("Total bill is upto now is:" + ftot);
+		System.out.println("The state of shoppper's cart is" + data);
 		int c = (int) ftot;
 		billing(c);
 		System.out.println("-----------------------------------------------");
@@ -525,10 +519,11 @@ public class StockPrice implements CartImpl, BillingImpl {
 
 	public void billing(int totBill) {
 		this.bill = totBill;
-		System.out.println("The final bill you have to pay is" + this.bill);
+		System.out.println("The total cost of all the items in th cart is "
+				+ this.bill);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		System.out.println("The customer exit time is"
+		System.out.println("The customer leaves the store at"
 				+ dateFormat.format(date));
 
 	}

@@ -11,7 +11,7 @@ import manager.ManagerImpl;
 
 import com.takehome.stock.StockPrice;
 
-public class Use implements Runnable {
+public class ShopperActivity implements Runnable {
 
 	public synchronized void run() {
 		ManagerImpl imp1 = new ManagerImpl();
@@ -24,9 +24,9 @@ public class Use implements Runnable {
 		}
 
 		StockPrice s = new StockPrice();
-		System.out.println("Cart alloted to\t"
-				+ Thread.currentThread().getName());
-		System.out.println("\n");
+		System.out.println(
+				Thread.currentThread().getName()+"entered the cart at");
+		//System.out.println("\n");
 		s.cartTime();
 		System.out
 				.println("-------------------------------------------------------------------------");
@@ -43,7 +43,7 @@ public class Use implements Runnable {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int noOfCarts = 6, num = 0;
-		Use u = new Use();
+		ShopperActivity u = new ShopperActivity();
 
 		System.out.println("Enter the number of carts required");
 
@@ -51,7 +51,7 @@ public class Use implements Runnable {
 			num = Integer.parseInt(br.readLine());
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
-			System.out.println("No of customers in the cart at\t"
+			System.out.println("No of shoppers are there in the store at\t"
 					+ dateFormat.format(date) + num);
 			System.out.println("\n");
 		} catch (IOException e) {
