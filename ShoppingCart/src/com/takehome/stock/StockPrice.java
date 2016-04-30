@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
+import manager.ManagerImpl;
 
 import com.takehome.billing.BillingImpl;
 
@@ -22,6 +23,7 @@ import cart.CartImpl;
 
 
 public class StockPrice implements CartImpl,BillingImpl{
+	ManagerImpl imp=new ManagerImpl();
 		public void cartTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -32,6 +34,7 @@ public class StockPrice implements CartImpl,BillingImpl{
 InventoryImpl impl=new InventoryImpl(); 
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 	private int bill;
+	private HashMap<String, Integer> hm;
 public void checkAndBuy() throws NumberFormatException, IOException{
 // to know the prices of the items
 	long ftot=0;
@@ -80,7 +83,7 @@ while(choice){
 //end of while(select)
 
 //select Items and purchase
-HashMap<String, Integer> hm=new HashMap<String, Integer>();
+ hm=new HashMap<String, Integer>();
 boolean want=true;
 System.out.println("do you want to continueshopping (true or false) ");
 want=Boolean.parseBoolean(br.readLine());
@@ -88,10 +91,10 @@ while(want){
 System.out.println("select items to add to the  cart");
     System.out.println("1.Fruits");
     System.out.println("2.Beverges");
-    System.out.println("Instant Noodles");
-    System.out.println("Vegetables");
-    System.out.println("Non-Vegetables");
-    System.out.println("clothing");
+    System.out.println("3.Instant Noodles");
+    System.out.println("4.Vegetables");
+    System.out.println("5.Non-Vegetables");
+    System.out.println("6.clothing");
     int i=Integer.parseInt(br.readLine());
 switch(i){
 case 1:
@@ -115,18 +118,19 @@ case 1:
            int qty=Integer.parseInt(br.readLine());
            long tot=qty*price;
            System.out.println("total price:"+tot);
-        
+           if(	 impl.getTotapples()==0){
+      		imp.resetapples();
+      			}
+           else{
         impl.setTotapples((impl.getTotapples())-qty);
          System.out.println("remaining totapples:"+impl.getTotapples());
+           }
            ftot=ftot+tot;
-           /*Set<String> data=new HashSet<String>();
-           data=hm.keySet();
-           System.out.println(data);*/
            break;
+           
     case 2:
          String name1="pears";
-         
-     	Integer price1=ht.get(name1);
+         Integer price1=ht.get(name1);
          if(price1!=null){
          	int p1=price1.intValue();
          	System.out.println(name1+"price1:"+p1);
@@ -138,23 +142,29 @@ case 1:
             int qty1=Integer.parseInt(br.readLine());
             int tot1=qty1*price1;
             System.out.println("total price:"+tot1);
-          impl.setTotpears((impl.getTotpears()-qty1));
+            if(	 impl.getTotpears()==0){
+          		imp.resetpears();
+          			}
+               else{
+            impl.setTotpears((impl.getTotpears())-qty1);
+             System.out.println("remaining totapples:"+impl.getTotapples());
+               }
+            impl.setTotpears((impl.getTotpears()-qty1));
           System.out.println("remaining totapples:"+impl.getTotapples());
-          /*Set<String> data1=new HashSet<String>();
-          data1=hm.keySet();
-          System.out.println(data1);*/
           break;
      default:
     	 System.out.println("invalid option");
      
     }//end of inner switch
     break;//break of case1
+    
 case 2:
 	System.out.println("select beverges to add to the  cart");
     System.out.println("1.tropicana");
     System.out.println("2.redlabel");
     int b=Integer.parseInt(br.readLine());
     switch(b){
+    
     case 1:
         String name2="tropicana";
         
@@ -170,12 +180,17 @@ case 2:
             int qty2=Integer.parseInt(br.readLine());
             int tot2=qty2*price2;
             System.out.println("total price:"+tot2);
+            if(	 impl.getTottropicana()==0){
+          		imp.resettropicana();
+          			}
+               else{
+            impl.setTotapples((impl.getTottropicana())-qty2);
+             System.out.println("remaining totapples:"+impl.getTottropicana());
+               }
           impl.setTottropicana((impl.getTottropicana()-qty2));
           System.out.println("remaining tottropicana:"+impl.getTottropicana());
-         /* Set<String> data=new HashSet<String>();
-          data=hm.keySet();
-          System.out.println(data);*/
     break;
+    
    case 2:
    
 	   String name3="redlabel";
@@ -192,11 +207,15 @@ case 2:
            int qty3=Integer.parseInt(br.readLine());
            int tot3=qty3*price3;
            System.out.println("total price:"+tot3);
+           if(	 impl.getTotredlabel()==0){
+         		imp.resetredlabel();
+         			}
+              else{
+           impl.setTotapples((impl.getTotredlabel())-qty3);
+            System.out.println("remaining totapples:"+impl.getTotredlabel());
+              }
          impl.setTotredlabel((impl.getTotredlabel()-qty3));
          System.out.println("remaining totredlabel:"+impl.getTotredlabel());
-       /*  Set<String> data2=new HashSet<String>();
-         data2=hm.keySet();
-         System.out.println(data2);*/
          break;
     default:
    	 System.out.println("invalid option");
@@ -228,11 +247,16 @@ String name4="maggie";
             int qty4=Integer.parseInt(br.readLine());
             int tot4=qty4*price4;
             System.out.println("total price:"+tot4);
+            if(	 impl.getTotmaggie()==0){
+          		imp.resetmaggie();
+          			}
+               else{
+            impl.setTotmaggie((impl.getTotmaggie())-qty4);
+             System.out.println("remaining totapples:"+impl.getTotmaggie());
+               }
           impl.setTotmaggie((impl.getTotmaggie()-qty4));
           System.out.println("remaining totmaggie:"+impl.getTotmaggie());
-        /*  Set<String> data3=new HashSet<String>();
-          data3=hm.keySet();
-          System.out.println(data3);*/
+        
           break;
    case 2:
    
@@ -250,19 +274,21 @@ String name4="maggie";
            int qty5=Integer.parseInt(br.readLine());
            int tot5=qty5*price5;
            System.out.println("total price:"+tot5);
-         impl.setTotyippie((impl.getTotpears()-qty5));
+           if(	 impl.getTotyippie()==0){
+         		imp.resetyippie();
+         			}
+              else{
+           impl.setTotyippie((impl.getTotyippie())-qty5);
+            System.out.println("remaining totapples:"+impl.getTotyippie());
+              }
+         impl.setTotyippie((impl.getTotyippie()-qty5));
          System.out.println("remaining totyippie:"+impl.getTotyippie());
-        /* Set<String> data4=new HashSet<String>();
-         data4=hm.keySet();
-         System.out.println(data4);*/
+        
          break;
     default:
    	 System.out.println("invalid option");
     
-   }//end of inner switch
-  /*  Set<String> data5=new HashSet<String>();
-    data5=hm.keySet();
-    System.out.println(data5);*/
+   }
  break;
 case 4:
 	System.out.println("select vegetables to add to the  cart");
@@ -286,11 +312,15 @@ String name6="beans";
             int qty6=Integer.parseInt(br.readLine());
             int tot6=qty6*price6;
             System.out.println("total price:"+tot6);
+            if(	 impl.getTotbeans()==0){
+          		imp.resetbeans();
+          			}
+               else{
+            impl.setTotbeans((impl.getTotbeans())-qty6);
+             System.out.println("remaining totapples:"+impl.getTotbeans());
+               }
           impl.setTotbeans((impl.getTotbeans()-qty6));
           System.out.println("remaining totbeans:"+impl.getTotbeans());
-          /*Set<String> data6=new HashSet<String>();
-          data6=hm.keySet();
-          System.out.println(data6);*/
           break;
    case 2:
 	   String name7="leafyvegetables";
@@ -306,6 +336,13 @@ String name6="beans";
            int qty7=Integer.parseInt(br.readLine());
            int tot7=qty7*price7;
            System.out.println("total price:"+tot7);
+           if(	 impl.getTotleafyvegetables()==0){
+         		imp.resetleafyvegetables();
+         			}
+              else{
+           impl.setTotleafyvegetables((impl.getTotleafyvegetables())-qty7);
+            System.out.println("remaining totapples:"+impl.getTotleafyvegetables());
+              }
          impl.setTotleafyvegetables((impl.getTotpears()-qty7));
          System.out.println("remaining totleafyvegetables:"+impl.getTotleafyvegetables());
          Set<String> data7=new HashSet<String>();
@@ -315,10 +352,7 @@ String name6="beans";
     default:
    	 System.out.println("invalid option");
     
-   }//end of inner switch
-    /*Set<String> data8=new HashSet<String>();
-    data8=hm.keySet();
-    System.out.println(data8);*/
+   }
     break;	
 case 5:
 	System.out.println("select non vegetables to add to the  cart");
@@ -342,12 +376,16 @@ case 5:
             int qty8=Integer.parseInt(br.readLine());
             int tot8=qty8*price8;
             System.out.println("total price:"+tot8);
+            if(	 impl.getTotchicken()==0){
+          		imp.resetchicken();
+          			}
+               else{
+            impl.setTotchicken((impl.getTotchicken())-qty8);
+             System.out.println("remaining totapples:"+impl.getTotchicken());
+               }
           impl.setTotchicken((impl.getTotchicken()-qty8));
           System.out.println("remaining totchicken:"+impl.getTotchicken());
-          /*Set<String> data9=new HashSet<String>();
-          data9=hm.keySet();
-          System.out.println(data9);
-*/          break;
+            break;
    case 2:
    
 	   String name9="mutton";
@@ -364,12 +402,16 @@ case 5:
            int qty9=Integer.parseInt(br.readLine());
            int tot9=qty9*price9;
            System.out.println("total price:"+tot9);
+           if(	 impl.getTotmutton()==0){
+         		imp.resetmutton();
+         			}
+              else{
+           impl.setTotmutton((impl.getTotmutton())-qty9);
+            System.out.println("remaining totapples:"+impl.getTotmutton());
+              }
          impl.setTotmutton((impl.getTotmutton()-qty9));
-         System.out.println("remaining totapples:"+impl.getTotmutton());
-        /* Set<String> data10=new HashSet<String>();
-         data10=hm.keySet();
-         System.out.println(data10);
-*/         break;
+         System.out.println("remaining totmutton:"+impl.getTotmutton());
+           break;
     default:
    	 System.out.println("invalid option");
     
@@ -400,11 +442,15 @@ String name10="jeans";
             int qty10=Integer.parseInt(br.readLine());
             int tot10=qty10*price10;
             System.out.println("total price:"+tot10);
+            if(	 impl.getTotjeans()==0){
+          		imp.resetjeans();
+          			}
+               else{
+            impl.setTotjeans((impl.getTotjeans())-qty10);
+             System.out.println("remaining totjeans:"+impl.getTotjeans());
+               }
           impl.setTotjeans((impl.getTotpears()-qty10));
           System.out.println("remaining totapples:"+impl.getTotjeans());
-          /*Set<String> data12=new HashSet<String>();
-          data12=hm.keySet();
-          System.out.println(data12);*/
           break;
    case 2:
    
@@ -422,6 +468,13 @@ String name10="jeans";
            int qty11=Integer.parseInt(br.readLine());
            int tot11=qty11*price11;
            System.out.println("total price:"+tot11);
+           if(	 impl.getTottshirt()==0){
+         		imp.resettshirt();
+         			}
+              else{
+           impl.setTottshirt((impl.getTottshirt())-qty11);
+            System.out.println("remaining tottshirts:"+impl.getTottshirt());
+              }
          impl.setTottshirt((impl.getTotpears()-qty11));
          System.out.println("remaining totapples:"+impl.getTottshirt());
          DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -450,11 +503,11 @@ System.out.println("total bill is:"+ftot);
 int c=(int) ftot;
 billing(c);
 System.out.println("-----------------------------------------------");
+
+
 }
 
 public void billing(int totBill) {
-	
-	
 	this.bill=totBill;
 System.out.println("the final bill is"+this.bill);	
 

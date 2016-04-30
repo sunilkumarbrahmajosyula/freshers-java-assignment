@@ -11,16 +11,21 @@ import java.util.Date;
 
 import manager.ManagerImpl;
 
-import com.takehome.billing.BillingImpl;
 import com.takehome.stock.StockPrice;
-
-import cart.CartImpl;
 
 public class Use implements Runnable {
        
    public synchronized void run() {
-	 ManagerImpl m=new ManagerImpl();
-	 m.setData();
+		ManagerImpl imp1=new ManagerImpl();
+		try {
+			imp1.setData();
+		} catch (NumberFormatException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		InventoryImpl imp=new InventoryImpl();
+		imp.display();
 	   StockPrice s=new StockPrice();
 		System.out.println("cart alloted to"
 				+ Thread.currentThread().getName());
@@ -34,10 +39,8 @@ public class Use implements Runnable {
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-	
-		  }
-	
-	public static void main(String[] args) throws InterruptedException {
+   }
+		public static void main(String[] args) throws InterruptedException {
        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
        
        int noOfCarts=6,num = 0;
