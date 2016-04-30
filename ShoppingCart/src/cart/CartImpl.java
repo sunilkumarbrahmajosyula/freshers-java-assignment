@@ -1,7 +1,6 @@
 package cart;
 
-
 public interface CartImpl {
-void cartTime();
-	
+	void cartTime();
+
 }

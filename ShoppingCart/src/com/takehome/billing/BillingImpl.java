@@ -1,11 +1,7 @@
 package com.takehome.billing;
 
+public interface BillingImpl {
 
-
-public interface BillingImpl  {
-
-void billing(int totBill);
-	
+	void billing(int totBill);
 
 }
-
